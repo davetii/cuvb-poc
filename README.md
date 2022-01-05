@@ -2,12 +2,15 @@
 Hibernate JPA + Spring Boot REST Server
 
 ##Todo
-* Create DDL
-* Get
-* PUT
-* Load H2 Tables
-* isolated JPA Tests
-* Service layer
-* Service layer test
-* REST Layer
-* REST Tests
+ * Create CRUD repo
+ * Create insert Test
+ * Create GET test
+ * Service layer
+ * Service layer tests
+ * REST Layer
+ * REST Tests
+ * Eligibility end point
+
+##Completed
+* Create DDL classes
+* Access H2
