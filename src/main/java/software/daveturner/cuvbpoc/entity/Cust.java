@@ -16,7 +16,7 @@ public class Cust  {
 
     @Id
     @Column(name = "CUST_IDENT_ID", nullable=false)
-    private String custId;
+    private String custIdentId;
 
     @Column(name = "DECISION_STATUS_CD", nullable=false)
     private String decisionStatusCode;
@@ -35,12 +35,12 @@ public class Cust  {
         this.custIdentType = custIdentType;
     }
 
-    public String getCustId() {
-        return custId;
+    public String getCustIdentId() {
+        return custIdentId;
     }
 
-    public void setCustId(String custId) {
-        this.custId = custId;
+    public void setCustIdentId(String custId) {
+        this.custIdentId = custId;
     }
 
     public String getDecisionStatusCode() {
