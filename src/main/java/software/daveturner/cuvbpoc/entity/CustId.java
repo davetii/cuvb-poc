@@ -8,12 +8,29 @@ import java.util.Objects;
 public class CustId implements Serializable {
 
     protected String custIdentType;
-
     protected String custIdentId;
 
     public CustId(String custIdentType, String custId) {
         this.custIdentId = custId;
         this.custIdentType = custIdentType;
+    }
+
+    public CustId() { }
+
+    public String getCustIdentType() {
+        return custIdentType;
+    }
+
+    public void setCustIdentType(String custIdentType) {
+        this.custIdentType = custIdentType;
+    }
+
+    public String getCustIdentId() {
+        return custIdentId;
+    }
+
+    public void setCustIdentId(String custIdentId) {
+        this.custIdentId = custIdentId;
     }
 
     @Override

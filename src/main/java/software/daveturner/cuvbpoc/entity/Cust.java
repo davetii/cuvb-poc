@@ -10,6 +10,16 @@ public class Cust  {
 
     public Cust() { }
 
+    /*
+    @Id
+    @JoinColumns( {
+            @JoinColumn(name="custIdentType", referencedColumnName="CUST_IDENT_TYPE"),
+            @JoinColumn(name="custIdentId", referencedColumnName="CUST_IDENT_ID")
+    } )
+    private CustId custId;
+
+     */
+
     @Id
     @Column(name = "CUST_IDENT_TYPE", nullable=false)
     private String custIdentType;
@@ -24,24 +34,8 @@ public class Cust  {
     @Column(name = "DECISION_STATUS_TIMSTM", nullable=false)
     private LocalDateTime decisionStatusTimeStamp;
 
-    @Column(name = "DECLINE_REASON_CD", nullable=false)
+    @Column(name = "DECLINE_REASON_CD")
     private String declineReasonCode;
-
-    public String getCustIdentType() {
-        return custIdentType;
-    }
-
-    public void setCustIdentType(String custIdentType) {
-        this.custIdentType = custIdentType;
-    }
-
-    public String getCustIdentId() {
-        return custIdentId;
-    }
-
-    public void setCustIdentId(String custId) {
-        this.custIdentId = custId;
-    }
 
     public String getDecisionStatusCode() {
         return decisionStatusCode;
@@ -65,6 +59,22 @@ public class Cust  {
 
     public void setDeclineReasonCode(String declineReasonCode) {
         this.declineReasonCode = declineReasonCode;
+    }
+
+    public String getCustIdentType() {
+        return custIdentType;
+    }
+
+    public void setCustIdentType(String custIdentType) {
+        this.custIdentType = custIdentType;
+    }
+
+    public String getCustIdentId() {
+        return custIdentId;
+    }
+
+    public void setCustIdentId(String custIdentId) {
+        this.custIdentId = custIdentId;
     }
 }
 
