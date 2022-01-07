@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class CustOfferDeferPk extends CustPk implements Serializable {
 
     @Column(name = "OFFER_DT", nullable=false)
-    protected LocalDate offerDate;
+    private LocalDate offerDate;
 
     @ManyToOne
     @JoinColumns({

@@ -1,11 +1,10 @@
 package software.daveturner.cuvbpoc.repo;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import software.daveturner.cuvbpoc.BaseVBOfferTest;
 import software.daveturner.cuvbpoc.entity.Cust;
 import software.daveturner.cuvbpoc.entity.CustPk;
 
@@ -15,7 +14,16 @@ import java.time.format.DateTimeFormatter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class CustRepoTest extends BaseRepoTest{
+public class CustRepoTest extends BaseVBOfferTest {
+
+    @BeforeEach
+    public void setup () {
+        cust = new Cust();
+        cust.setCustPk(DEFAULT_ID);
+        cust.setDecisionStatusCode(DEFAULT_DECISION);
+        cust.setDecisionStatusTimeStamp(LocalDateTime.now());
+        custRepo.save(cust);
+    }
 
     @Test
     public void ensureCustRepoAddReturnsExpected() {

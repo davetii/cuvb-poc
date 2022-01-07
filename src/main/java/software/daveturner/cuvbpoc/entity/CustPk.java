@@ -9,10 +9,10 @@ import java.util.Objects;
 public class CustPk implements Serializable {
 
     @Column(name = "CUST_IDENT_TYPE", nullable=false)
-    protected String custIdentType;
+    private String custIdentType;
 
     @Column(name = "CUST_IDENT_ID", nullable=false)
-    protected String custIdentId;
+    private String custIdentId;
 
     public CustPk(String custIdentType, String custId) {
         this.custIdentId = custId;
