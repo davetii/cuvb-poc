@@ -1,32 +1,16 @@
 package software.daveturner.cuvbpoc.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "CUST")
-@IdClass(CustId.class)
-public class Cust  {
+public class Cust implements Serializable {
 
-    public Cust() { }
-
-    /*
-    @Id
-    @JoinColumns( {
-            @JoinColumn(name="custIdentType", referencedColumnName="CUST_IDENT_TYPE"),
-            @JoinColumn(name="custIdentId", referencedColumnName="CUST_IDENT_ID")
-    } )
-    private CustId custId;
-
-     */
-
-    @Id
-    @Column(name = "CUST_IDENT_TYPE", nullable=false)
-    private String custIdentType;
-
-    @Id
-    @Column(name = "CUST_IDENT_ID", nullable=false)
-    private String custIdentId;
+    @EmbeddedId
+    private CustPk custPk;
 
     @Column(name = "DECISION_STATUS_CD", nullable=false)
     private String decisionStatusCode;
@@ -36,6 +20,14 @@ public class Cust  {
 
     @Column(name = "DECLINE_REASON_CD")
     private String declineReasonCode;
+
+    public CustPk getCustPk() {
+        return custPk;
+    }
+
+    public void setCustPk(CustPk custPk) {
+        this.custPk = custPk;
+    }
 
     public String getDecisionStatusCode() {
         return decisionStatusCode;
@@ -61,20 +53,16 @@ public class Cust  {
         this.declineReasonCode = declineReasonCode;
     }
 
-    public String getCustIdentType() {
-        return custIdentType;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cust cust = (Cust) o;
+        return Objects.equals(custPk, cust.custPk) && Objects.equals(decisionStatusCode, cust.decisionStatusCode) && Objects.equals(decisionStatusTimeStamp, cust.decisionStatusTimeStamp) && Objects.equals(declineReasonCode, cust.declineReasonCode);
     }
 
-    public void setCustIdentType(String custIdentType) {
-        this.custIdentType = custIdentType;
-    }
-
-    public String getCustIdentId() {
-        return custIdentId;
-    }
-
-    public void setCustIdentId(String custIdentId) {
-        this.custIdentId = custIdentId;
+    @Override
+    public int hashCode() {
+        return Objects.hash(custPk, decisionStatusCode, decisionStatusTimeStamp, declineReasonCode);
     }
 }
-

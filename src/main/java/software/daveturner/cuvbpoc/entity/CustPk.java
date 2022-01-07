@@ -1,21 +1,25 @@
 package software.daveturner.cuvbpoc.entity;
 
-
-
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class CustId implements Serializable {
+@Embeddable
+public class CustPk implements Serializable {
 
+    @Column(name = "CUST_IDENT_TYPE", nullable=false)
     protected String custIdentType;
+
+    @Column(name = "CUST_IDENT_ID", nullable=false)
     protected String custIdentId;
 
-    public CustId(String custIdentType, String custId) {
+    public CustPk(String custIdentType, String custId) {
         this.custIdentId = custId;
         this.custIdentType = custIdentType;
     }
 
-    public CustId() { }
+    public CustPk() { }
 
     public String getCustIdentType() {
         return custIdentType;
@@ -37,8 +41,8 @@ public class CustId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CustId custId1 = (CustId) o;
-        return Objects.equals(custIdentType, custId1.custIdentType) && Objects.equals(custIdentId, custId1.custIdentId);
+        CustPk custPk = (CustPk) o;
+        return Objects.equals(custIdentType, custPk.custIdentType) && Objects.equals(custIdentId, custPk.custIdentId);
     }
 
     @Override
