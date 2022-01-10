@@ -46,7 +46,23 @@ public class CustRepoTest extends BaseVBOfferTest {
         assertEquals("changedstatuscode", custRepo.findById(DEFAULT_ID).get().getDecisionStatusCode());
         assertEquals("changedreason", custRepo.findById(DEFAULT_ID).get().getDeclineReasonCode());
         assertEquals(newTime.format(dateFormat), custRepo.findById(DEFAULT_ID).get().getDecisionStatusTimeStamp().format(dateFormat));
+    }
 
+    @Test
+    public void ensureUKReturnsExpected() {
+        Cust cust2 = new Cust();
+        cust2.setCustPk(DEFAULT_ID);
+        cust2.setDecisionStatusCode("DECISION2");
+        cust2.setDecisionStatusTimeStamp(LocalDateTime.now());
+        custRepo.save(cust2);
+
+        Cust cust3 = new Cust();
+        cust3.setCustPk(DEFAULT_ID);
+        cust3.setDecisionStatusCode("DECISION3");
+        cust3.setDecisionStatusTimeStamp(LocalDateTime.now());
+        custRepo.save(cust3);
+
+        assertEquals(1, custRepo.count());
     }
 
 

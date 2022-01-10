@@ -11,7 +11,6 @@ import software.daveturner.cuvbpoc.entity.CustOfferDeferPk;
 import software.daveturner.cuvbpoc.entity.CustPk;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -23,7 +22,7 @@ public class CustOfferDeferRepoTest extends BaseVBOfferTest {
     public void ensureCustConstraintViolationThrowsError() {
         Assertions.assertThrows(DataIntegrityViolationException.class, ()-> {
                     CustOfferDefer offerDefer  = newCustOfferDefer(DEFAULT_DEFER_ID, "Random reason");
-                    offerRepo.save(offerDefer);
+                    deferRepo.save(offerDefer);
         }, "DataIntegrityViolationException thrown");
     }
 
@@ -32,13 +31,13 @@ public class CustOfferDeferRepoTest extends BaseVBOfferTest {
         CustPk custPk = newCustPK("TEST_TYPE", "2");
         Cust cust = newCust(custPk,"TEST_DECISION" );
         custRepo.save(cust);
-        assertEquals(0, offerRepo.count());
+        assertEquals(0, deferRepo.count());
         CustOfferDeferPk offerPk = new CustOfferDeferPk(custPk.getCustIdentType(), custPk.getCustIdentType(), LocalDate.now());
         offerPk.setCust(cust);
         CustOfferDefer offerDefer  = newCustOfferDefer(offerPk, "SOMEREASON");
-        offerRepo.save(offerDefer);
-        assertEquals(1, offerRepo.count());
-        CustOfferDefer fetchedOfferDefer = offerRepo.findAll().iterator().next();
+        deferRepo.save(offerDefer);
+        assertEquals(1, deferRepo.count());
+        CustOfferDefer fetchedOfferDefer = deferRepo.findAll().iterator().next();
         CustPk fetchedCustomerPk = fetchedOfferDefer.getCustOfferDeferPk().getCust().getCustPk();
         assertEquals("2", fetchedCustomerPk.getCustIdentId());
         assertEquals("TEST_TYPE", fetchedCustomerPk.getCustIdentType());

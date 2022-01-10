@@ -24,13 +24,13 @@ public class BaseVBOfferTest {
     protected CustRepo custRepo;
 
     @Autowired
-    protected CustOfferDeferRepo offerRepo;
+    protected CustOfferDeferRepo deferRepo;
 
     protected Cust cust;
 
     @AfterEach()
     public void cleanup() {
-        offerRepo.deleteAll();
+        deferRepo.deleteAll();
         custRepo.deleteAll();
     }
 
