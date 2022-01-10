@@ -2,13 +2,12 @@
 Hibernate JPA + Spring Boot REST Server
 
 ##Todo
-* Add getCust to Service
-* Create index names
 * REST Layer
 * REST Tests
-
+* Create index names
 
 ##Completed
+* Add getCust to Service
 * Create DDL classes
 * Access H2
 * create repo
