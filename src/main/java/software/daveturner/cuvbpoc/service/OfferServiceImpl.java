@@ -12,11 +12,13 @@ import software.daveturner.cuvbpoc.model.OfferResponse;
 import software.daveturner.cuvbpoc.repo.CustOfferDeferRepo;
 import software.daveturner.cuvbpoc.repo.CustRepo;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class OfferServiceImpl implements OfferService {
 
     @Autowired
